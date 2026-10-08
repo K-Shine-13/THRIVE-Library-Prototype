@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>THRIVE: Challenge to Action</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="wrap">
+    <h1>Welcome to the THRIVE Library</h1>
+    <p class="lede">Pick a THRIVE area, choose a challenge, and follow the research to strategies and interventions.</p>
+
+    <div class="picker">
+      <label for="area">Select a THRIVE Area:</label>
+      <select id="area"></select>
+    </div>
+
+    <div class="about">
+      <p><b>What is it?</b> <span id="what"></span></p>
+      <p><b>Characterized by:</b> <span id="char"></span></p>
+    </div>
+
+    <div class="flow">
+      <section class="col r" aria-labelledby="h1">
+        <div class="head">
+          <div class="badge">!</div>
+          <div>
+            <h2 id="h1">Critical Issues</h2>
+            <p>Key challenges identified in the research</p>
+          </div>
+        </div>
+        <div class="list" id="issues"></div>
+      </section>
+      <div class="arrow" aria-hidden="true">&rarr;</div>
+      <section class="col b" aria-labelledby="h2">
+        <div class="head">
+          <div class="badge">&#9678;</div>
+          <div>
+            <h2 id="h2">Strategic Priorities</h2>
+            <p>Long-term focus areas addressing challenges</p>
+          </div>
+        </div>
+        <div class="list" id="priorities"></div>
+      </section>
+      <div class="arrow" aria-hidden="true">&rarr;</div>
+      <section class="col g" aria-labelledby="h3">
+        <div class="head">
+          <div class="badge">&#128161;</div>
+          <div>
+            <h2 id="h3">Interventions</h2>
+            <p>Specific actions &amp; programs to implement</p>
+          </div>
+        </div>
+        <div class="list" id="interventions"></div>
+      </section>
+    </div>
+    <p class="note">Prototype: content is drawn from the one-pagers. Links between challenges and priorities are
+      provisional and should be confirmed.</p>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
