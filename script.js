@@ -147,7 +147,7 @@ $("priorities").onclick = e => {
 };
 $("interventions").onclick = e => {
   const b = e.target.closest(".cta"); if (!b) return;
-  showArticles(b.dataset.q);
+  alert("Prototype: this would open the library filtered by \"" + b.dataset.q + "\".");
 };
 render();
 
@@ -175,42 +175,14 @@ function runSearch() {
 function go(r) {
   area = r.area; sel.value = area;
   selIssue = ("i" in r) ? r.i : null; selPri = ("i" in r) ? null : r.j;
-  res.hidden = true; q.value = ""; render(); showArticles(r.label, false);
+  res.hidden = true; q.value = ""; render();
   $("issues").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 q.oninput = runSearch;
 q.onkeydown = e => { if (e.key === "Escape") res.hidden = true; if (e.key === "Enter" && hits[0] && !res.hidden) go(hits[0]); };
 res.onclick = e => {
   const b = e.target.closest(".hit"); if (!b) return;
-  if (b.dataset.lib) { const t = q.value.trim(); res.hidden = true; showArticles(t); }
+  if (b.dataset.lib) alert("Prototype: this would send \"" + q.value.trim() + "\" to your existing library search.");
   else go(hits[+b.dataset.k]);
 };
 document.addEventListener("click", e => { if (!e.target.closest(".search")) res.hidden = true; });
-
-// ---- Mock article results (placeholders: replace with real library data) ----
-const ATYPES = ["Research Report", "Case Study", "Policy Brief", "Evaluation", "Data Brief"];
-const PLACES = ["Orange County", "Statewide", "Seminole County", "Osceola County", "Central Florida", "National"];
-let artTopic = "", artFilter = "All";
-function mockArticles(topic) {
-  const titles = [`${topic}: Evidence from Central Florida`, `Scaling ${topic}: Lessons from Pilot Programs`, `Policy Options for ${topic}`,
-  `Community Voices on ${topic}`, `Cost and Impact of ${topic}`, `National Models Relevant to ${topic}`];
-  return titles.map((t, i) => ({ title: t, type: ATYPES[i % ATYPES.length], year: 2025 - i, place: PLACES[i % PLACES.length] }));
-}
-function drawArticles() {
-  const all = mockArticles(artTopic);
-  const list = artFilter === "All" ? all : all.filter(a => a.type === artFilter);
-  $("arts-sub").textContent = `Showing ${list.length} of ${all.length} sample results (placeholder content)`;
-  $("arts-chips").innerHTML = ["All", ...ATYPES].map(t => `<button class="chip ${t === artFilter ? "on" : ""}" data-t="${t}">${t}</button>`).join("");
-  $("art-grid").innerHTML = list.length ? list.map(a => `<article class="art"><span class="tag">${a.type}</span>
-    <h3>${esc(a.title)}</h3><div class="meta">Sample Publisher · ${a.year} · ${a.place}</div>
-    <p>Placeholder summary. Two to three sentences describing the article's key findings and relevance would appear here.</p>
-    <a href="#" onclick="return false">Read article &rarr;</a></article>`).join("") : `<div class="empty">No sample articles of this type.</div>`;
-}
-function showArticles(topic, scroll = true) {
-  artTopic = topic; artFilter = "All";
-  $("arts-title").textContent = `Related articles: “${topic}”`;
-  $("articles").hidden = false; drawArticles();
-  if (scroll) $("articles").scrollIntoView({ behavior: "smooth", block: "start" });
-}
-$("arts-chips").onclick = e => { const b = e.target.closest("[data-t]"); if (b) { artFilter = b.dataset.t; drawArticles(); } };
-$("arts-all").onclick = () => alert("Prototype: this would open your existing library search for “" + artTopic + "”.");
