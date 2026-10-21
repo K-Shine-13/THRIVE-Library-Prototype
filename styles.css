@@ -344,6 +344,98 @@ h1 {
   color: var(--muted)
 }
 
+.search {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto 14px
+}
+
+.search input {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  padding: 13px 20px;
+  border-radius: 999px;
+  border: 2px solid var(--pill);
+  background: var(--bg);
+  color: var(--text)
+}
+
+.search input:focus {
+  outline: 3px solid var(--text);
+  outline-offset: 2px
+}
+
+.results {
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  right: 0;
+  top: calc(100% + 6px);
+  background: var(--bg);
+  border: 2px solid var(--pill);
+  border-radius: 18px;
+  padding: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+  max-height: 360px;
+  overflow-y: auto
+}
+
+.hit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  border-radius: 12px;
+  padding: 9px 12px;
+  cursor: pointer
+}
+
+.hit:hover,
+.hit:focus-visible {
+  background: var(--pill)
+}
+
+.hit small {
+  color: var(--muted);
+  font-size: .74rem
+}
+
+.hit.lib {
+  font-weight: 600;
+  border-top: 1px solid var(--pill);
+  border-radius: 0 0 12px 12px
+}
+
+.none {
+  padding: 10px 12px;
+  color: var(--muted);
+  font-size: .9rem
+}
+
+.how {
+  text-align: center;
+  font-size: .85rem;
+  color: var(--muted);
+  margin: 0 0 20px
+}
+
+.how b {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--pill);
+  color: var(--text);
+  margin: 0 2px
+}
+
 @media (max-width:900px) {
   .flow {
     grid-template-columns: 1fr

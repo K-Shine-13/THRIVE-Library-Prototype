@@ -10,8 +10,15 @@
 
 <body>
   <div class="wrap">
-    <h1>Welcome to the THRIVE Library</h1>
+    <h1>From Challenge to Action</h1>
     <p class="lede">Pick a THRIVE area, choose a challenge, and follow the research to strategies and interventions.</p>
+
+    <div class="search">
+      <input id="q" type="search" autocomplete="off"
+        placeholder="Search by keyword, e.g. “child care”, “SNAP”, “housing”"
+        aria-label="Search challenges, priorities and interventions">
+      <div id="results" class="results" hidden></div>
+    </div>
 
     <div class="picker">
       <label for="area">Select a THRIVE Area:</label>
@@ -22,6 +29,9 @@
       <p><b>What is it?</b> <span id="what"></span></p>
       <p><b>Characterized by:</b> <span id="char"></span></p>
     </div>
+
+    <p class="how"><b>1</b> Pick a challenge &rarr; <b>2</b> see the priority that addresses it &rarr; <b>3</b> explore
+      interventions</p>
 
     <div class="flow">
       <section class="col r" aria-labelledby="h1">
